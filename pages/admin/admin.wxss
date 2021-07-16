@@ -1,0 +1,7 @@
+/* pages/admin/admin.wxss */
+.bt{
+  height: 70rpx;
+  width: 66%;
+  font-size: small;
+  margin-left: 0;
+}

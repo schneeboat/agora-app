@@ -1,0 +1,5 @@
+/* pages/tab2/main.wxss */
+.button {
+  width: 500rpx;
+  margin: 10rpx;
+}
