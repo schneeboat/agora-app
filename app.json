@@ -1,0 +1,34 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/history/history",
+    "pages/orderRecord/order",
+    "pages/admin/admin"
+  ],
+
+  "window":{
+    "navigationBarTitleText": "Hungary app",
+    "navigationBarBackgroundColor" : "#f5f3f3",
+    "navigationBarTextStyle" : "black",
+    "backgroundColor" : "#ffffff",
+    "enablePullDownRefresh" : true,
+    "onReachBottomDistance" : 50
+  },
+  "tabBar": {
+    "position": "bottom",
+    "color" : "#000000",
+    "selectedColor" : "#7BB32E",
+    "backgroundColor" : "#ffffff", 
+   
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "登录"
+    },{
+      "pagePath": "pages/history/history",
+      "text": "预定"
+    }]
+  },
+
+  "sitemapLocation": "sitemap.json"
+}
