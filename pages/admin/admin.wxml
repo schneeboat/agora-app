@@ -1,4 +1,5 @@
 <!--pages/admin/admin.wxml-->
+<<<<<<< HEAD
 
 <view class="flex-wrp" style="flex-direction:column;">
 
@@ -14,3 +15,19 @@
 		<button form-type="submit" type="primary">提交</button>
 	</form>
 </view>
+=======
+<view class="flex-wrp" style="flex-direction:column;">
+
+<form bindsubmit="submit">
+  <view><label>开放订餐：</label>
+    <switch bindchange="switchChange" checked="{{can_order}}"></switch>
+  </view>
+
+<view>
+<label>就餐日期：</label><input name="dinnerDate" placeholder="请输入就餐日期" value="{{dinnerDate}}"></input>
+</view>
+  <button class="bt" bindtap="sendFoodHU">发送食材预定记录</button>
+  <button form-type="submit" type="primary">提交</button>
+</form>
+</view>
+>>>>>>> 6a42697d90f759d53197fd435ec742605962f179

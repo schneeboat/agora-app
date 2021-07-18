@@ -1,0 +1,15 @@
+<!--index.wxml-->
+<view class="container" style="padding: 200rpx 0;">
+  <view style="margin-bottom:50rpx">
+    <label>{{message}}</label>
+  </view>
+
+  <view class="section">
+    <form bindsubmit="bindFormSubmit">
+      <button plain="true" disabled="{{buttonDisabled}}"  form-type="submit" type="{{buttonType}}">{{buttonText}}</button>
+    </form>
+  </view>
+
+
+
+</view>

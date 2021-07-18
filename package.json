@@ -1,5 +1,10 @@
 {
   "dependencies": {
+<<<<<<< HEAD
     "nodemailer": "^6.6.3"
+=======
+    "node-modules": "^0.0.1",
+    "wx-server-sdk": "^2.5.3"
+>>>>>>> 6a42697d90f759d53197fd435ec742605962f179
   }
 }

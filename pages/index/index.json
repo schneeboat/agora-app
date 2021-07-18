@@ -1,5 +1,9 @@
 {
   "usingComponents": {
+<<<<<<< HEAD
     "tab4": "/pages/component/tab4/tab4"
+=======
+    "tab1": "/pages/history/history"
+>>>>>>> 6a42697d90f759d53197fd435ec742605962f179
   }
 }
