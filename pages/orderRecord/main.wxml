@@ -1,5 +1,4 @@
 <!--pages/orderRecord/main.wxml-->
-<button class="bt" bindtap="sendMail">发送订餐记录(仅限管理员)</button>
 <view class="table">
   <view class="tr bg-w">
     <view class="th">姓名工号</view>

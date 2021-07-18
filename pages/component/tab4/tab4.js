@@ -1,16 +1,14 @@
 // pages/component/tab2/main.js
 const app = getApp()
 Component({
-   /**
-   * 组件的初始数据
-   */
+   
   data: {
     isLogin:false,
-    status:"未预定",//共3种状态：未预定，已预定，提交中
+    status:"未预定",
     buttonType: "primary",
-    quantity:1,//预定份数
+    quantity:1,
     orderId: null,
-    floorNum:0,//默认楼层
+    floorNum:0,
     employee:null,
     isLongTime:0,
     can_order2:false,
@@ -20,15 +18,13 @@ Component({
     ]
   },
 
-  /**
-   * 组件的属性列表
-   */
+
   properties: {
 
   },
   
   pageLifetimes: {
-    // 组件所在页面的生命周期函数
+
     show: function () {
       console.log("tab4.show");
       if (app.globalData.userInfo) {
@@ -50,14 +46,10 @@ Component({
     resize: function () { },
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
+
   attached:function(){
   },
-  /**
- * 生命周期函数--监听页面加载
- */
+
   ready: function (options) {
     if (app.globalData.userInfo) {
       this.setData({
@@ -76,31 +68,25 @@ Component({
     
     
   },
-  /**
-   * 组件的方法列表
-   */
+
   methods: {
 
     
  
-    /**
-     * 按钮操作
-     */
+
     bindFormSubmit: function () {
      if(!this._validate()){
         return;
      }
       
-      //判断是否预定过，如果没有预定则执行预定操作，如果已经预定则执行取消操作
+   
       if (this.data.status == "已预定") {
         this._cancel();
-      } else { //已经预定执行取消操作
+      } else { 
         this._save();
       }
     },
-    /**
-     * 获取就餐日期（本周六）
-     */
+
     _getDinnerDate:function(){
       var now = new Date();
       var day = now.getDay();
@@ -110,24 +96,22 @@ Component({
     },
    
 
-    /**
-    * 初始化函数
-    */
+ 
     init: function () {
       console.log("tab4.init");
-      //初始化页面
+
       this.setData({
         status:"未预定",
         buttonType: "primary",
-        quantity:1,//预定份数
+        quantity:1,
         orderId: null,
-        floorNum:0,//默认楼层
+        floorNum:0,
         isLongTime:0
       })
-      //判断本周是否已经订餐
+
       const db = wx.cloud.database();
       console.log(app.globalData.openId);
-       db.collection('orders').where({_openid:app.globalData.openId}).orderBy('serverDate','desc').limit(1).get({//获取最近一条预定记录
+       db.collection('orders').where({_openid:app.globalData.openId}).orderBy('serverDate','desc').limit(1).get({
         success: res => {
           if (res.data.length > 0) {
             if (res.data[0].dinnerDate == this.data.dinnerDate&&res.data[0].status=="已预定") {
@@ -135,7 +119,7 @@ Component({
                 status:"已预定"
               })
             }
-            //即使没有预定也要把上次选择的记录带出来
+       
             this.setData({
               orderId: res.data[0]._id,
               employee:res.data[0].employee,
@@ -144,7 +128,7 @@ Component({
               floorNum:res.data[0].floorNum
             })
           }
-           /* else{//如果没有记录则从加班订餐中取姓名工号和楼层
+           /* else{
             
             db.collection('ordersHU').where({_openid:app.globalData.openId}).orderBy('serverDate','desc').limit(1).get({//获取最近一条预定记录
               success: res => {
@@ -168,9 +152,7 @@ Component({
         }
       })
     },
-      /**
-   * 加载配置文件
-   */
+
     loadConfig:function(){
     console.log("tab4.loadConfig");
     const db = wx.cloud.database();
@@ -197,13 +179,13 @@ Component({
   
     },
    
-    //获得员工信息
+
     getEmployee:function(e){
       this.setData({
         employee:e.detail.value
       })
     },
-    //保存是否要长期预定
+
     checkboxChange:function(e){
       console.log(e.detail.value);
       if(e.detail.value==1){
@@ -216,17 +198,15 @@ Component({
         })
       }
     },
-    //保存份数
+
     sliderChange:function(e){
       this.setData({
         quantity:e.detail.value
       })
     },
-     /**
-   * 校验工号、楼层、区域等必填信息
-   */
+
   _validate:function(){
-    //检测是否登录
+
     if(!app.globalData.userInfo){
       wx.showToast({
         icon:"none",
@@ -251,9 +231,7 @@ Component({
 
     return true;
   },
-  /**
-     * 查看订餐记录
-     */
+
     navigateToOrderRecord:function() {
       wx.switchTab({
  
@@ -262,9 +240,7 @@ Component({
       })
     },
 
-    /**
-     * 判断当天是是第几周
-     */
+
     getWeek: function () {
       var d1 = new Date();
       var d2 = new Date();
@@ -277,14 +253,12 @@ Component({
     },
 
     
-     /**
-   * 保存订餐信息
-   */
+
   _save:function(){
     wx.showLoading({
       title: '提交中...',
     })
-    //设置状态为提交中，让按钮不可用，避免重复提交
+
     this.setData({
       status:"提交中"
     })
@@ -304,7 +278,7 @@ Component({
         serverDate:serverDate,
         status:"已预定"
       },
-      //保存成功时执行
+    
       success: res => {
         wx.showLoading({
           title: '提交中...',
@@ -315,7 +289,7 @@ Component({
         });
 
       },
-      //保存失败时执行
+ 
       fail: err => {
         wx.showToast({
           icon: 'none',
@@ -325,11 +299,9 @@ Component({
     })
  },
 
- /**
-  * 取消操作
-  */
+
  _cancel:function () {
-   //设置状态为提交中，让按钮不可用，避免重复提交
+ 
    this.setData({
     status:"提交中"
   })

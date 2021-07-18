@@ -3,9 +3,7 @@
 <view class="flex-wrp" style="flex-direction:column;">
 
 	<form bindsubmit="submit">
-<!--  		<view><label>开放订餐：</label>
-			<switch bindchange="switchChange" checked="{{can_order}}"></switch>
-		</view>  -->
+
 			<view><label>开放食材预定：</label>
 			<switch bindchange="switchChange2" checked="{{can_order2}}"></switch>
 		</view>

@@ -1,20 +1,16 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/tab2/main",
-    "pages/tab4/main",
-
     "pages/logs/logs",
     "pages/orderRecord/main",
-    "pages/admin",
     "pages/admin/admin",
     "pages/component/tab4/tab4"
   ],
 
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "Agora",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "Agora订餐",
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json"

@@ -14,8 +14,8 @@ var config = {
     pass: 'guklhjxfejeobhcc' //邮箱的授权码
   }
 };
-// 创建一个SMTP客户端对象
-var transporter = createTransport(config);
+// 创建一个SM
+var transporter = nodemailer.createTransport(config); 
 // 云函数入口函数
 exports.main = async(event, context) =>{
   //从配置文件中获取就餐日期
@@ -69,6 +69,6 @@ exports.main = async(event, context) =>{
     html: str //可以是链接，也可以是验证码
   };
   
-  let res = await transporter.sendMailHU(mail);
+  let res = await transporter.sendMail(mail);
   return 200;
 }

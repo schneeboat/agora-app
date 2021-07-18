@@ -6,10 +6,10 @@
   align-items: center;
   justify-content: space-between;
   padding: 200rpx 0;
-
+ background: #b0e0e6;
 } 
 page {
-  background: #f6f6f6;
+  background: #b0e0e6;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
