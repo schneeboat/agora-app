@@ -1,12 +1,12 @@
 // 云函数入口文件
 const cloud = require('wx-server-sdk')
 cloud.init()
-const db = database()
+const db = cloud.database()
 const MAX_LIMIT = 100
 const DINNER_DATE = "4月18日"
 const xlsx = require('node-xlsx');//操作excel用的库类
 // 云函数入口函数
-export async function main(event, context) {
+exports.main = async(event, context) =>{
   //生成excel
 //1.定义excel表格名
   let cvs = "订餐记录HU" + DINNER_DATE + ".xlsx"
@@ -47,7 +47,7 @@ export async function main(event, context) {
 
 
 console.log(alldata.toString());
-  var buffer = build([{ name: "mysheet", data: alldata }]) //把数据保存到exccel里
+  var buffer = await xlsx.build([{ name: "mysheet", data: alldata }]) //把数据保存到exccel里
 //把数据保存到exccel里
   return await uploadFile({ cloudPath: cvs, fileContent: buffer })//excel保存到云储存里
 }

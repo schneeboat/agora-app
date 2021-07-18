@@ -1,6 +1,6 @@
 const cloud = require('wx-server-sdk')
 cloud.init()
-const db = database()
+const db = cloud.database()
 const MAX_LIMIT = 100
 
 //引入发送邮件的类库

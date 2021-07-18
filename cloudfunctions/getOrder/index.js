@@ -1,8 +1,8 @@
 const cloud = require('wx-server-sdk')
 cloud.init()
-const db = database()
+const db = cloud.database()
 const MAX_LIMIT = 100
-export async function main(event, context) {
+exports.main = async (event, context)=> {
   // 先取出集合记录总数
   const countResult = await db.collection('orders').where({dinnerDate:"4月18日"}).count()
   const total = countResult.total
