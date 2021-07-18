@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 .container{
   display: flex;
@@ -61,3 +62,29 @@
 .label2{
   margin-bottom: 5rpx;
 }
+=======
+/**index.wxss**/
+.container{
+  padding: 100rpx;
+}
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #aaa;
+}
+
+.userinfo-avatar {
+  overflow: hidden;
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+.label2 {
+  padding-top: 300rpx;
+}
+
+
+>>>>>>> 6a42697d90f759d53197fd435ec742605962f179

@@ -1,0 +1,20 @@
+<!--pages/orderRecord/order.wxml-->
+<button class="bt" bindtap="sendMailHU">发送订餐记录(仅限管理员)</button>
+<view class="table">
+  <view class="tr bg-w">
+    <view class="th">姓名工号</view>
+    <view class="th">订餐日期</view>
+    <view class="th ">就餐日期</view>
+    <view class="th ">预定状态</view>
+  </view>
+
+  <block wx:for="{{listData}}">
+  <view class="tr">
+  <view class="td">{{item.employee}}</view>
+  <view class="td">{{item.dateTime}}</view>
+  <view class="td">{{item.dinnerDate}}</view>
+  <view class="td">{{item.status}}</view>
+
+  </view>
+  </block>
+</view>
