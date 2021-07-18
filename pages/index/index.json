@@ -1,5 +1,5 @@
 {
   "usingComponents": {
-    "tab1": "/pages/history/history"
+    "tab4": "/pages/component/tab4/tab4"
   }
 }

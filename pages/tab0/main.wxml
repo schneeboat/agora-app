@@ -1,0 +1,10 @@
+<!--index.wxml-->
+<view class="container" style="padding: 200rpx 0;">
+  <view style="flex-direction:column;">
+  <view>
+    页面加载中...
+  </view>
+</view>
+   
+
+</view>

@@ -55,10 +55,10 @@ exports.main = async(event, context) => {
   var str ="<h1>总预定人数为："+alldata.length+"人次:（请注意去重）</h1>";
   str +="<table border='1'>";
   str +="<tr>";
-  str +="<th>序号</th><th>楼层</th><th>区域</th><th>员工</th>"
+  str +="<th>序号</th><th>楼层</th><th>员工</th>"
   str +="</tr>";
   for(var i=0;i<alldata.length;i++){
-    str+="<tr><td>"+eval(i+1)+"</td><td>"+alldata[i][0]+"</td><td>"+alldata[i][1]+"</td><td>"+alldata[i][3]+"</td></tr>"
+    str+="<tr><td>"+eval(i+1)+"</td><td>"+alldata[i][0]+"</td><td>"+alldata[i][1]+"</td></tr>"
   }
   str +="</table>";
   var mail = {

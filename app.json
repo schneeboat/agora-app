@@ -1,34 +1,21 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
+    "pages/tab2/main",
+    "pages/tab4/main",
+
     "pages/logs/logs",
-    "pages/history/history",
-    "pages/orderRecord/order",
-    "pages/admin/admin"
+    "pages/orderRecord/main",
+    "pages/admin",
+    "pages/admin/admin",
+    "pages/component/tab4/tab4"
   ],
 
-  "window":{
-    "navigationBarTitleText": "Hungary app",
-    "navigationBarBackgroundColor" : "#f5f3f3",
-    "navigationBarTextStyle" : "black",
-    "backgroundColor" : "#ffffff",
-    "enablePullDownRefresh" : true,
-    "onReachBottomDistance" : 50
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Agora",
+    "navigationBarTextStyle": "black"
   },
-  "tabBar": {
-    "position": "bottom",
-    "color" : "#000000",
-    "selectedColor" : "#7BB32E",
-    "backgroundColor" : "#ffffff", 
-   
-    "list": [{
-      "pagePath": "pages/index/index",
-      "text": "登录"
-    },{
-      "pagePath": "pages/history/history",
-      "text": "预定"
-    }]
-  },
-
   "sitemapLocation": "sitemap.json"
 }

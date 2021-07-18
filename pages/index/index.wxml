@@ -2,7 +2,7 @@
 <view class="container">
 	<view class="userinfo">
 		<block wx:if="{{!hasUserInfo && canIUse}}">
-			<button class="userinfo-button" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 登录</button>
+			<button class="userinfo-button" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 登录</button>后使用
 		</block>
 
 		<block wx:else>
@@ -10,10 +10,14 @@
 			<text class="userinfo-nickname">{{userInfo.nickName}}</text>
 		</block>
 	</view>
-	<modal hidden="{{hiddenPasswordModal}}" title="请输入密码" confirm-text="提交" cancel-text="重置" bindcancel="cancel" bindconfirm="confirm">  
+
+		<view class='content-wrapper' wx:if='{{currentTab == 4}}'>
+		<tab4 />
+	</view>
+
+<label class="label2">Agora</label>
+<modal hidden="{{hiddenPasswordModal}}" title="请输入密码" confirm-text="提交" cancel-text="重置" bindcancel="cancel" bindconfirm="confirm">  
     <input name="password" password="true" type='text' placeholder="密码" bindinput="getPassword"  value="{{password}}" auto-focus/>  
 </modal>  
   <label class="label2" bindtap="showPasswordModal">管理员配置</label>
 </view>
-
-

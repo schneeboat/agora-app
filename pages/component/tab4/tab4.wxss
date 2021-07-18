@@ -1,0 +1,52 @@
+/* pages/component/tab2/main.wxss */
+.floor-container{
+  display: flex;
+  flex-direction: row;
+}
+.food-type{
+  font-size: 14px;
+  width: 40%;
+}
+.floor-item{
+  font-size: 14px;
+  width: 20%;
+}
+.office-item{
+  font-size: 14px;
+  width: 25%;
+}
+
+.active{
+  background-color:#07C160;
+  color:white;
+}
+
+.input1{
+  background-color: white;
+  border-bottom: chartreuse;
+  height: 60rpx;
+  
+}
+.font1{
+  font-weight: bold;
+  font-size: small;
+  color: blue;
+}
+.line{
+  margin: 0 auto;
+  height: 1px;
+  background-color: #07C160;
+  margin-bottom: 60rpx;
+}
+
+.submit-button{
+  width: 66%;
+  margin-top: 50rpx;
+  margin-bottom: 50rpx;
+}
+navigator{
+  
+  text-align: center;
+  font-size: small;
+  color: blue;
+}

@@ -1,11 +1,10 @@
 // 云函数入口文件
-import { init, database, uploadFile } from 'wx-server-sdk'
-
-init()
+const cloud = require('wx-server-sdk')
+cloud.init()
 const db = database()
 const MAX_LIMIT = 100
-const DINNER_DATE = "7月15日"
-import { build } from 'node-xlsx'//操作excel用的库类
+const DINNER_DATE = "4月18日"
+const xlsx = require('node-xlsx');//操作excel用的库类
 // 云函数入口函数
 export async function main(event, context) {
   //生成excel

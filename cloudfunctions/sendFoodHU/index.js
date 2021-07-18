@@ -1,10 +1,10 @@
-import { init } from 'wx-server-sdk'
-init()
+const cloud = require('wx-server-sdk')
+cloud.init()
 const db = database()
 const MAX_LIMIT = 100
 
 //引入发送邮件的类库
-import nodemailer from 'nodemailer'
+var nodemailer = require('nodemailer')
 // 创建一个SMTP客户端配置
 var config = {
   host: 'smtp.qq.com', //网易163邮箱 smtp.163.com
@@ -43,9 +43,7 @@ exports.main = async(event, context) =>{
       for (let key in userdata.data) {
         let arr = [];
         arr.push(userdata.data[key].floorNum);//楼层
- 
         arr.push(userdata.data[key].employee);//工号
-
         alldata.push(arr);
       }
     }
@@ -54,10 +52,10 @@ exports.main = async(event, context) =>{
   var str ="<h1>总预定人数为："+alldata.length+"人次:（请注意去重）</h1>";
   str +="<table border='1'>";
   str +="<tr>";
-  str +="<th>序号</th><th>楼层</th><th>区域</th><th>员工</th>"
+  str +="<th>序号</th><th>楼层</th><th>员工</th>"
   str +="</tr>";
   for(var i=0;i<alldata.length;i++){
-    str+="<tr><td>"+eval(i+1)+"</td><td>"+alldata[i][0]+"</td><td>"+alldata[i][1]+"</td><td>"+alldata[i][3]+"</td></tr>"
+    str+="<tr><td>"+eval(i+1)+"</td><td>"+alldata[i][0]+"</td><td>"+alldata[i][1]+"</td></tr>"
   }
   str +="</table>";
   var mail = {

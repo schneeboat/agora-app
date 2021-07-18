@@ -1,4 +1,4 @@
-<!--pages/history/history.wxml-->
+<!--index.wxml-->
 <view class="container" style="padding: 5rpx 0;">
 
 
@@ -7,49 +7,36 @@
 <input disabled="{{status=='已预定'?true:false}}" class="input1" placeholder="张三123456" value="{{employee}}" bindinput="getEmployee"/>
 <view hidden='{{status=="已预定"?true:false}}' class="line"></view>
 </view>
-<br/>
+ <!--选择办公区域-->
 
+  <!--选择办公区域-->
   <view>
   <!--选择楼层-->
     <label>选择楼层:</label>
     <view class="floor-container">
       <button disabled="{{status=='已预定'&&floorNum!=8 ?true:false}}" class='floor-item {{floorNum == 8 ? "active" : ""}}' bindtap="selectFloorNum" data-floornum="8">8楼</button>
       <button disabled="{{status=='已预定'&&floorNum!=9 ?true:false}}" class='floor-item {{floorNum == 9 ? "active" : ""}}' bindtap="selectFloorNum" data-floornum="9">9楼</button>
-    
     </view>
-
- 
+    <!--选择区域-->
+    
   </view>
-
- <view hidden="true">
- <label>预定份数:</label>
- <slider disabled="{{status=='已预定'?true:false}}" min="1" max="10" show-value="true" value="{{quantity}}" bindchange="sliderChange"></slider>
- </view> 
-
-
-<checkbox-group hidden="true" bindchange="checkboxChange">
-  <label class="checkbox" wx:for="{{checkboxItems}}">
-    <checkbox disabled="{{status=='已预定'?true:false}}" value="{{item.value}}" checked="{{isLongTime}}"/>{{item.name}}
-  </label>
-</checkbox-group>
-
 
   <view class="section">
     <form bindsubmit="bindFormSubmit">
     <!--未登录-->
     <block wx:if="{{isLogin}}">
       <!--未到订餐时间-->
-      <block wx:if="{{!can_order}}">
+      <block wx:if="{{!can_order2}}">
         <button disabled="false" class="submit-button" plain="true"  form-type="submit" type="{{buttonType}}">未到订餐时间</button>
       </block>
       <!--已到订餐时间-->
       <block wx:else>
         <!--判断是否订餐-->
         <block wx:if="{{status=='已预定'}}">
-          <button class="submit-button" plain="true"  form-type="submit" type="{{buttonType}}">取消订餐</button>
+          <button class="submit-button" plain="true"  form-type="submit" type="{{buttonType}}">取消预定</button>
         </block>
         <block wx:elif="{{status=='未预定'}}">
-          <button class="submit-button" plain="true"  form-type="submit" type="{{buttonType}}">我要订餐</button>
+          <button class="submit-button" plain="true"  form-type="submit" type="{{buttonType}}">我要预定</button>
         </block>
         <block wx:elif="{{status=='提交中'}}">
           <button disabled="true" class="submit-button" plain="true"  form-type="submit" type="{{buttonType}}">提交中...</button>
@@ -62,7 +49,5 @@
     </form>
      
   </view>
-
-  <view style="width:100%;"><navigator url="/pages/orderRecord/order" open-type="navigate">查看预定记录</navigator></view>
-
+  <view style="width:100%;"><navigator url="/pages/orderRecord/main" open-type="navigate">查看预定记录</navigator></view>
 </view>

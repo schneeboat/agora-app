@@ -1,5 +1,9 @@
 {
+  "description": "项目配置文件",
   "cloudfunctionRoot": "cloudfunctions/",
+  "packOptions": {
+    "ignore": []
+  },
   "setting": {
     "urlCheck": true,
     "es6": true,
@@ -28,16 +32,23 @@
       "outputPath": ""
     },
     "enableEngineNative": false,
-    "useIsolateContext": true,
+    "useIsolateContext": false,
     "userConfirmedBundleSwitch": false,
     "packNpmManually": false,
     "packNpmRelationList": [],
     "minifyWXSS": true,
     "showES6CompileOption": false
   },
+  "compileType": "miniprogram",
+  "libVersion": "2.9.4",
   "appid": "wx2c2b50808b194da6",
-  "projectname": "jul15",
-  "libVersion": "2.14.1",
+  "projectname": "Agora",
+  "debugOptions": {
+    "hidedInDevtools": []
+  },
+  "isGameTourist": false,
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
   "cloudfunctionTemplateRoot": "cloudfunctionTemplate",
   "condition": {
     "search": {
@@ -46,10 +57,8 @@
     "conversation": {
       "list": []
     },
-    "plugin": {
-      "list": []
-    },
     "game": {
+      "currentL": -1,
       "list": []
     },
     "miniprogram": {

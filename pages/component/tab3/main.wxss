@@ -1,0 +1,10 @@
+.button {
+  width: 500rpx;
+  margin: 10rpx;
+
+}
+.textarea{
+    background-color:white; 
+    margin-bottom: 25rpx;
+   
+}

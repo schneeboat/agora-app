@@ -1,5 +1,5 @@
-import { init, database } from 'wx-server-sdk'
-init()
+const cloud = require('wx-server-sdk')
+cloud.init()
 const db = database()
 const MAX_LIMIT = 100
 export async function main(event, context) {

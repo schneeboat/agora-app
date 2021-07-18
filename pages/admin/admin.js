@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    can_order:false,
+    /* can_order:false, */
+    can_order2:false,
     dinnerDate:null
   },
 
@@ -25,8 +26,8 @@ Page({
       success:res=>{
         this.setData({
           dinnerDate:res.data[0].dinnerDate,
-          can_order:res.data[0].can_order,
-
+         /*  can_order:res.data[1].can_order, */
+          can_order2:res.data[0].can_order2
         })
         this.init();
       },
@@ -35,13 +36,17 @@ Page({
       }
     })
   },
-  switchChange:function(e){
+/*    switchChange:function(e){
     this.setData({
-      can_order:e.detail.value,
+      can_order:e.detail.value
+    }) 
+  }, */
+  switchChange2:function(e){
+    this.setData({
+      can_order2:e.detail.value
     })
   },
-
-  sendFoodHU:function (e) {
+  sendFood:function (e) {
     wx.cloud.callFunction({
       name:"sendFoodHU",
       success:res=>{
@@ -57,10 +62,10 @@ Page({
   },
   submit:function(e){
     console.log(e.detail.value.dinnerDate)
-    console.log(this.data.can_order)
+    console.log(this.data.can_order2)
     const db = wx.cloud.database();
     db.collection("config").doc("cbddf0af60f03d13170dd9df7013f1e2").update({
-      data:{dinnerDate:e.detail.value.dinnerDate,can_order:this.data.can_order}
+      data:{dinnerDate:e.detail.value.dinnerDate,can_order2:this.data.can_order2}
     }).then(wx.showToast({
       title: '修改成功',
     }))

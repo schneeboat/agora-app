@@ -1,3 +1,4 @@
+// pages/orderRecord/main.js
 const app = getApp()
 Page({
 
@@ -44,10 +45,10 @@ Page({
   /**
    * 发送预定记录
    */
-  sendMailHU:function(){
+  sendMail:function(){
     let that = this
     wx.cloud.callFunction({
-      name:"sendMailHU",
+      name:"sendFoodHU",
       success:res=>{
         //that.getFileUrl(res.result.fileID)
       },
