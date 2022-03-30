@@ -1,9 +1,16 @@
 <!--pages/orderRecord/main.wxml-->
+		<button class="bt" bindtap="sendScoreNew" disabled="{{can_order2}}"><b>管理员</b>发送订餐记录(仅19:00后）</button>
+      <modal hidden="{{hiddenSendCommentModal}}" title="请输入密码" confirm-text="提交" cancel-text="重置" bindcancel="cancel1" bindconfirm="confirm1">
+      <input name="password1" password="true" type="text" placeholder="密码" bindinput="getPassword1" value="{{password1}}" />
+    </modal>
 <view class="table">
   <view class="tr bg-w">
     <view class="th">姓名工号</view>
     <view class="th">订餐日期</view>
     <view class="th ">就餐日期</view>
+    <view class="th">早</view>
+    <view class="th">午</view>
+    <view class="th">晚</view>
     <view class="th ">预定状态</view>
   </view>
 
@@ -12,6 +19,9 @@
   <view class="td">{{item.employee}}</view>
   <view class="td">{{item.dateTime}}</view>
   <view class="td">{{item.dinnerDate}}</view>
+    <view class="td">{{item.breaki}}</view>
+      <view class="td">{{item.lunch}}</view>
+        <view class="td">{{item.dinner}}</view>
   <view class="td">{{item.status}}</view>
 
   </view>

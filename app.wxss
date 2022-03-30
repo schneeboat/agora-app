@@ -6,21 +6,11 @@
   align-items: center;
   justify-content: space-between;
   padding: 200rpx 0;
-<<<<<<< HEAD
- background: #b0e0e6;
-} 
+ background: #e2f0f1;} 
 page {
-  background: #b0e0e6;
+  background: #e2f0f1;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
 }
 
-=======
-  box-sizing: border-box;
-} 
-
-page{
- background: #ccfcf4;
-}
->>>>>>> 6a42697d90f759d53197fd435ec742605962f179

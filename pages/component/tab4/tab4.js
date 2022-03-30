@@ -1,20 +1,26 @@
 // pages/component/tab2/main.js
 const app = getApp()
 Component({
-   
   data: {
     isLogin:false,
     status:"未预定",
     buttonType: "primary",
-    quantity:1,
     orderId: null,
     floorNum:0,
     employee:null,
-    isLongTime:0,
     can_order2:false,
     dinnerDate:null,
-    checkboxItems:[
-      {name:"我要长期预定",value:'1'}
+    breaki:0,
+    lunch:0,
+    dinner:0,
+    checkboxItemsbreaki:[
+      {name:"早餐",value:'1'}
+    ],
+     checkboxItemslunch:[
+      {name:"午餐",value:'1'}
+    ],
+     checkboxItemsdinner:[
+      {name:"晚餐",value:'1'}
     ]
   },
 
@@ -22,9 +28,7 @@ Component({
   properties: {
 
   },
-  
   pageLifetimes: {
-
     show: function () {
       console.log("tab4.show");
       if (app.globalData.userInfo) {
@@ -45,8 +49,6 @@ Component({
     hide: function () { },
     resize: function () { },
   },
-
-
   attached:function(){
   },
 
@@ -71,42 +73,24 @@ Component({
 
   methods: {
 
-    
- 
-
     bindFormSubmit: function () {
      if(!this._validate()){
         return;
      }
       
-   
       if (this.data.status == "已预定") {
         this._cancel();
       } else { 
         this._save();
       }
     },
-
-    _getDinnerDate:function(){
-      var now = new Date();
-      var day = now.getDay();
-      var delta = 6-day;
-      now.setDate(now.getDate()+delta);
-      return now.getMonth()+1+"月"+now.getDate()+"日";
-    },
-   
-
- 
     init: function () {
       console.log("tab4.init");
-
       this.setData({
         status:"未预定",
         buttonType: "primary",
-        quantity:1,
         orderId: null,
         floorNum:0,
-        isLongTime:0
       })
 
       const db = wx.cloud.database();
@@ -123,24 +107,15 @@ Component({
             this.setData({
               orderId: res.data[0]._id,
               employee:res.data[0].employee,
-              quantity:res.data[0].quantity,
-              isLongTime:res.data[0].isLongTime,
-              floorNum:res.data[0].floorNum
+              floorNum:res.data[0].floorNum,
+              breaki:res.data[0].breaki,
+              lunch:res.data[0].lunch,
+              dinner:res.data[0].dinner,
+           
             })
+
+
           }
-           /* else{
-            
-            db.collection('ordersHU').where({_openid:app.globalData.openId}).orderBy('serverDate','desc').limit(1).get({//获取最近一条预定记录
-              success: res => {
-                if (res.data.length > 0) {
-                  this.setData({
-                    employee:res.data[1].employee,
-                    floorNum:res.data[1].floorNum,
-                  })
-                }
-              }
-            })
-          }  */
           wx.hideLoading();
         },
         fail: err => {
@@ -151,16 +126,29 @@ Component({
           console.error('[数据库] [查询记录] 失败：', err)
         }
       })
+    
     },
 
     loadConfig:function(){
     console.log("tab4.loadConfig");
-    const db = wx.cloud.database();
-    db.collection('config').get({
+    const db= wx.cloud.database();   
+    var now = new Date();
+  var mealTime = now.getMonth()+1+"月"+Number(now.getDate()+1)+"日";  
+var hourn = now.getHours();
+if(hourn >=19){
+  db.collection("config").doc("cbddf0af60f03d13170dd9df7013f1e2").update({
+    data:{can_order2:false}
+  })
+}else{
+   db.collection("config").doc("cbddf0af60f03d13170dd9df7013f1e2").update({
+      data:{can_order2:true}
+    })
+}
+      db.collection('config').get({
       success:res=>{
         this.setData({
-          dinnerDate:res.data[0].dinnerDate,
-          can_order2:res.data[0].can_order2
+         dinnerDate:mealTime,
+         can_order2:res.data[0].can_order2
         })
         this.init();
       },
@@ -168,6 +156,7 @@ Component({
 
       }
     })
+
   }, 
    
 
@@ -186,23 +175,41 @@ Component({
       })
     },
 
-    checkboxChange:function(e){
+    checkboxChangebreaki:function(e){
       console.log(e.detail.value);
       if(e.detail.value==1){
         this.setData({
-          isLongTime : 1
+          breaki : 1
         })
       }else{
         this.setData({
-          isLongTime : 0
+          breaki : 0
         })
       }
     },
-
-    sliderChange:function(e){
-      this.setData({
-        quantity:e.detail.value
-      })
+        checkboxChangelunch:function(e){
+      console.log(e.detail.value);
+      if(e.detail.value==1){
+        this.setData({
+          lunch : 1
+        })
+      }else{
+        this.setData({
+          lunch : 0
+        })
+      }
+    },
+        checkboxChangedinner:function(e){
+      console.log(e.detail.value);
+      if(e.detail.value==1){
+        this.setData({
+          dinner : 1
+        })
+      }else{
+        this.setData({
+          dinner : 0
+        })
+      }
     },
 
   _validate:function(){
@@ -228,32 +235,20 @@ Component({
       })
       return false;
     }
-
+      if(this.data.breaki==0 &&this.data.lunch==0 &&this.data.dinner==0 ){
+      wx.showToast({
+        icon:"none",
+        title: '请输入餐类',
+      })
+      return false;
+    }
     return true;
   },
-
-    navigateToOrderRecord:function() {
+ navigateToOrderRecord:function() {
       wx.switchTab({
- 
-
-        url: '/pages/orderRecord/',
+  url: '/pages/orderRecord/main',
       })
     },
-
-
-    getWeek: function () {
-      var d1 = new Date();
-      var d2 = new Date();
-      d2.setMonth(0);
-      d2.setDate(1);
-      var rq = d1 - d2;
-      var s1 = Math.ceil(rq / (24 * 60 * 60 * 1000));
-      var s2 = Math.ceil(s1 / 7);
-      return s2;
-    },
-
-    
-
   _save:function(){
     wx.showLoading({
       title: '提交中...',
@@ -266,14 +261,17 @@ Component({
     var now = new Date();
     var dateTime = now.getMonth()+1+"月"+now.getDate()+"日";
     var serverDate = db.serverDate();
+    var mealTime = now.getMonth()+1+"月"+Number(now.getDate()+1)+"日";
+
     db.collection('orders').add({
       data: {
         user: app.globalData.userInfo.nickName,
         employee:this.data.employee,
+        breaki:this.data.breaki,
+        lunch:this.data.lunch,
+        dinner:this.data.dinner,
         floorNum:this.data.floorNum,
-        quantity:this.data.quantity,
-        isLongTime:this.data.isLongTime,
-        dinnerDate: this.data.dinnerDate,
+        dinnerDate:mealTime,
         dateTime: dateTime,
         serverDate:serverDate,
         status:"已预定"
@@ -329,6 +327,7 @@ Component({
      }
    })
  },
+ 
   },
   
 

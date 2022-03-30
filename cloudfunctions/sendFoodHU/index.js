@@ -20,10 +20,13 @@ var transporter = nodemailer.createTransport(config);
 exports.main = async(event, context) =>{
   //从配置文件中获取就餐日期
   const config = await db.collection('config').get()
-  const dinnerDate = config.data[0].dinnerDate
+ // const dinnerDate = config.data[0].dinnerDate
+
+  var now = new Date();
+  var dinnerDate = now.getMonth()+1+"月"+Number(now.getDate()+1)+"日";
   let alldata = []
 
- let cvs = "食材预定记录HU" + dinnerDate + ".xlsx"
+ let cvs = "Agora订餐记录" + dinnerDate + ".xlsx"
   
   const countResult = await db.collection('orders').where({ dinnerDate: dinnerDate, status: "已预定" }).count()
   const total = countResult.total
@@ -42,29 +45,69 @@ exports.main = async(event, context) =>{
       })
       for (let key in userdata.data) {
         let arr = [];
-        arr.push(userdata.data[key].floorNum);//楼层
-        arr.push(userdata.data[key].employee);//工号
+        arr.push(userdata.data[key].floorNum);
+        arr.push(userdata.data[key].employee);
+        arr.push(userdata.data[key].breaki);
+        arr.push(userdata.data[key].lunch);
+        arr.push(userdata.data[key].dinner);
         alldata.push(arr);
       }
+     var bcount=0
+     var lcount =0
+     var dcount = 0
+     
+        for(j in alldata){
+          if(alldata[j][2]==1){
+            bcount++
+          }
+          if(alldata[j][3]==1){
+            lcount++
+          }
+          if(alldata[j][4]==1){
+            dcount++
+          }
+        }
+      
+      /* for (let key in userdata.data) {
+        let arr = [];
+        if(userdata.data[key].breaki ==1){
+          arr.push(userdata.data[key].breaki);
+        }
+        breakicount.push(arr);
+      }
+      for (let key in userdata.data) {
+        let arr = [];
+        if(userdata.data[key].lunch ==1){
+          arr.push(userdata.data[key].lunch);
+        }
+        lunchcount.push(arr);
+      }
+      for (let key in userdata.data) {
+        let arr = [];
+        if(userdata.data[key].dinner ==1){
+          arr.push(userdata.data[key].dinner);
+        }
+        dinnercount.push(arr);
+      } */
     }
   // 创建一个邮件对象
   
-  var str ="<h1>总预定人数为："+alldata.length+"人次:（请注意去重）</h1>";
-  str +="<table border='1'>";
+  var str ="总预定人数为："+alldata.length+"人次 "+" 早餐："+bcount+"份 "+" 午餐："+lcount+" 份"+" 晚餐："+dcount+"份";
+  str +="<table>";
   str +="<tr>";
-  str +="<th>序号</th><th>楼层</th><th>员工</th>"
+  str +="<th>序号</th><th>楼层</th><th>员工</th><th>早餐</th><th>午餐</th><th>晚餐</th>"
   str +="</tr>";
   for(var i=0;i<alldata.length;i++){
-    str+="<tr><td>"+eval(i+1)+"</td><td>"+alldata[i][0]+"</td><td>"+alldata[i][1]+"</td></tr>"
+    str+="<tr><td>"+eval(i+1)+"</td><td>"+alldata[i][0]+"</td><td>"+alldata[i][1]+"</td><td>"+alldata[i][2]+"</td><td>"+alldata[i][3]+"</td><td>"+alldata[i][4]+"</td></tr>"
   }
   str +="</table>";
   var mail = {
     // 发件人
-    from: dinnerDate+'食材预定记录 <64705437@qq.com>',
+    from: dinnerDate+'的Agora订餐名单 <64705437@qq.com>',
     // 主题
-    subject: dinnerDate+'食材预定记录',
+    subject: dinnerDate+'Agora订餐记录',
     // 收件人
-    to: 'alexia.fan@huawei.com',
+    to: 'hungarys.manager@huawei.com',
     // 邮件内容，text或者html格式
     html: str //可以是链接，也可以是验证码
   };

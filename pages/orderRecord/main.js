@@ -1,15 +1,13 @@
 // pages/orderRecord/main.js
 const app = getApp()
 Page({
-
-
   data: {
-    dinnerDate:null,
+    can_order2:true,
     count:0,
-    listData:null
+    listData:null,
+    hiddenSendCommentModal:true,
+    password1:null
   },
-
-
   onLoad: function (options) {
 
   },
@@ -18,15 +16,13 @@ Page({
   onReady: function () {
     this.loadConfig();
   },
-  /**
-   * 
-   */
+  
   loadConfig:function(){
     const db = wx.cloud.database();
     db.collection('config').get({
       success:res=>{
         this.setData({
-          dinnerDate:res.data[0].dinnerDate,
+          can_order2:res.data[0].can_order2
         })
         this.getOrderList();
       },
@@ -35,13 +31,18 @@ Page({
       }
     })
   },
-
-
-  sendMail:function(){
+  
+ 
+  sendFood:function(){
+    
     let that = this
     wx.cloud.callFunction({
       name:"sendFoodHU",
       success:res=>{
+        wx.showToast({
+          title: '发送成功',
+        })
+        
         //that.getFileUrl(res.result.fileID)
       },
       fail:err=>{
@@ -69,17 +70,38 @@ Page({
     })
   },
 
+  cancel1:function(){
+    this.setData({
+      hiddenSendCommentModal:true
+    })
+  },
+
+  getPassword1:function(e){
+    this.setData({
+      password1:e.detail.value
+    })
+  },
+  sendScoreNew:function(){
+    this.setData({
+      hiddenSendCommentModal:false
+    })
+  },
+
+  confirm1:function(){
+    if(this.data.password1=="546754"){
+      console.log("密码正确")
+      this.sendFood()
+    }else{
+      console.log("密码错误")
+    }
+    this.setData({
+      hiddenSendCommentModal:true,
+      password1:null
+    })
+  },
 
   getOrderList:function(){
     const db = wx.cloud.database();
-
-    // db.collection('orders').count({
-    //   success:res=>{
-    //     this.setData({
-    //       count:res.total
-    //     })
-    //   }
-    // }),
 
     db.collection('orders').where({_openid:app.globalData.openId}).orderBy('serverDate','desc').limit(20).get({
       success: res => {

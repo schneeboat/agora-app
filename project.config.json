@@ -1,13 +1,9 @@
 {
-<<<<<<< HEAD
   "description": "项目配置文件",
   "cloudfunctionRoot": "cloudfunctions/",
   "packOptions": {
     "ignore": []
   },
-=======
-  "cloudfunctionRoot": "cloudfunctions/",
->>>>>>> 6a42697d90f759d53197fd435ec742605962f179
   "setting": {
     "urlCheck": true,
     "es6": true,
@@ -36,18 +32,13 @@
       "outputPath": ""
     },
     "enableEngineNative": false,
-<<<<<<< HEAD
     "useIsolateContext": false,
-=======
-    "useIsolateContext": true,
->>>>>>> 6a42697d90f759d53197fd435ec742605962f179
     "userConfirmedBundleSwitch": false,
     "packNpmManually": false,
     "packNpmRelationList": [],
     "minifyWXSS": true,
     "showES6CompileOption": false
   },
-<<<<<<< HEAD
   "compileType": "miniprogram",
   "libVersion": "2.9.4",
   "appid": "wx2c2b50808b194da6",
@@ -58,11 +49,6 @@
   "isGameTourist": false,
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
-=======
-  "appid": "wx2c2b50808b194da6",
-  "projectname": "jul15",
-  "libVersion": "2.14.1",
->>>>>>> 6a42697d90f759d53197fd435ec742605962f179
   "cloudfunctionTemplateRoot": "cloudfunctionTemplate",
   "condition": {
     "search": {
@@ -71,15 +57,8 @@
     "conversation": {
       "list": []
     },
-<<<<<<< HEAD
     "game": {
       "currentL": -1,
-=======
-    "plugin": {
-      "list": []
-    },
-    "game": {
->>>>>>> 6a42697d90f759d53197fd435ec742605962f179
       "list": []
     },
     "miniprogram": {

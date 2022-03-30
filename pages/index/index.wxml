@@ -2,35 +2,18 @@
 <view class="container">
 	<view class="userinfo">
 		<block wx:if="{{!hasUserInfo && canIUse}}">
-<<<<<<< HEAD
-			<button class="userinfo-button" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 登录</button>后使用
-=======
 			<button class="userinfo-button" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 登录</button>
->>>>>>> 6a42697d90f759d53197fd435ec742605962f179
 		</block>
 
-		<block wx:else>
-			<image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-			<text class="userinfo-nickname">{{userInfo.nickName}}</text>
-		</block>
 	</view>
-<<<<<<< HEAD
+<view class="txt">明日工作餐预定平台。预定和取消都要在本日19:00内完成，19:00后无法修改。</view>
+
 
 		<view class='content-wrapper' >
 		<tab4 />
 	</view>
 
-<label class="label2">Agora</label>
-<modal hidden="{{hiddenPasswordModal}}" title="请输入密码" confirm-text="提交" cancel-text="重置" bindcancel="cancel" bindconfirm="confirm">  
-=======
-	<modal hidden="{{hiddenPasswordModal}}" title="请输入密码" confirm-text="提交" cancel-text="重置" bindcancel="cancel" bindconfirm="confirm">  
->>>>>>> 6a42697d90f759d53197fd435ec742605962f179
-    <input name="password" password="true" type='text' placeholder="密码" bindinput="getPassword"  value="{{password}}" auto-focus/>  
-</modal>  
-  <label class="label2" bindtap="showPasswordModal">管理员配置</label>
+
 </view>
-<<<<<<< HEAD
-=======
 
-
->>>>>>> 6a42697d90f759d53197fd435ec742605962f179
+<label class="label2">Copyright@东北欧IT业务服务部 Alexia wx1074583</label>
