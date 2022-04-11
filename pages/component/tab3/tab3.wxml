@@ -1,0 +1,9 @@
+<view class="container" style="padding: 25rpx 0;">
+
+<view>
+  <form bindsubmit="bindFormSubmit">
+    <textarea style="width:90%; padding:10px;height:300px;border-radius: 5px;color:grey;" placeholder-style="color:black"  class="textarea" placeholder="We value your feedback!" value="{{content}}" name="textarea"/>
+    <button disabled="{{buttonDisabled}}" plain="true" style="width:50%; margin-top:50px" form-type="submit" type="primary"> Submit </button>
+  </form>
+</view>
+</view>

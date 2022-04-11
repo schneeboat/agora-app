@@ -1,0 +1,13 @@
+/* pages/tab3/main.wxss */
+.button {
+  width: 500rpx;
+  margin: 10rpx;
+
+}
+.textarea{
+    background-color:rgb(255, 255, 255); 
+    margin-bottom: 25rpx;
+    width: 90%;
+    margin:auto
+   
+}

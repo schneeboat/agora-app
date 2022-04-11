@@ -2,20 +2,20 @@
 <view class="container" style="padding: 5rpx 0;">
 
 <view style="margin-bottom:40rpx">
-<label class="lb1">姓名工号:</label>
-<input disabled="{{status=='已预定'?true:false}}" class="input1" placeholder="张三123456" value="{{employee}}" bindinput="getEmployee"/>
+<label class="lb1">Name+ID:</label>
+<input disabled="{{status=='已预定'?true:false}}" class="input1" placeholder="Andy 123456" value="{{employee}}" bindinput="getEmployee"/>
 <view hidden='{{status=="已预定"?true:false}}' class="line"></view>
 
 </view>
   <view>
   <!--选择楼层-->
-    <label class="lb1">楼层:</label>
+    <label class="lb1">Floor:</label>
     <view class="floor-container">
-      <button disabled="{{status=='已预定'&&floorNum!=5 ?true:false}}" class='floor-item {{floorNum == 5 ? "active" : ""}}' bindtap="selectFloorNum" data-floornum="5">5楼</button>
-      <button disabled="{{status=='已预定'&&floorNum!=6 ?true:false}}" class='floor-item {{floorNum == 6 ? "active" : ""}}' bindtap="selectFloorNum" data-floornum="6">6楼</button>
-      <button disabled="{{status=='已预定'&&floorNum!=7 ?true:false}}" class='floor-item {{floorNum == 7 ? "active" : ""}}' bindtap="selectFloorNum" data-floornum="7">7楼</button>
-      <button disabled="{{status=='已预定'&&floorNum!=8 ?true:false}}" class='floor-item {{floorNum == 8 ? "active" : ""}}' bindtap="selectFloorNum" data-floornum="8">8楼</button>
-      <button disabled="{{status=='已预定'&&floorNum!=9 ?true:false}}" class='floor-item {{floorNum == 9 ? "active" : ""}}' bindtap="selectFloorNum" data-floornum="9">9楼</button>
+      <button disabled="{{status=='已预定'&&floorNum!=5 ?true:false}}" class='floor-item {{floorNum == 5 ? "active" : ""}}' bindtap="selectFloorNum" data-floornum="5">5</button>
+      <button disabled="{{status=='已预定'&&floorNum!=6 ?true:false}}" class='floor-item {{floorNum == 6 ? "active" : ""}}' bindtap="selectFloorNum" data-floornum="6">6</button>
+      <button disabled="{{status=='已预定'&&floorNum!=7 ?true:false}}" class='floor-item {{floorNum == 7 ? "active" : ""}}' bindtap="selectFloorNum" data-floornum="7">7</button>
+      <button disabled="{{status=='已预定'&&floorNum!=8 ?true:false}}" class='floor-item {{floorNum == 8 ? "active" : ""}}' bindtap="selectFloorNum" data-floornum="8">8</button>
+      <button disabled="{{status=='已预定'&&floorNum!=9 ?true:false}}" class='floor-item {{floorNum == 9 ? "active" : ""}}' bindtap="selectFloorNum" data-floornum="9">9</button>
     </view>
 <view class="checkboxgroup">
  <checkbox-group bindchange="checkboxChangebreaki">
@@ -41,7 +41,7 @@
     <block wx:if="{{isLogin}}">
       <!--未到订餐时间-->
       <block wx:if="{{!can_order2}}">
-        <button disabled="false" class="submit-button" plain="true"  form-type="submit" type="{{buttonType}}">未到订餐时间</button>
+        <button disabled="false" class="submit-button" plain="true"  form-type="submit" type="{{buttonType}}">Closed:(</button>
       </block>
 
 
@@ -50,21 +50,21 @@
       <block wx:else>
         <!--判断是否订餐-->
         <block wx:if="{{status=='已预定'}}">
-          <button class="submit-button" plain="true"  form-type="submit" type="{{buttonType}}">取消预定</button>
+          <button class="submit-button" plain="true"  form-type="submit" type="{{buttonType}}">Cancel</button>
         </block>
         <block wx:elif="{{status=='未预定'}}">
-          <button class="submit-button" plain="true"  form-type="submit" type="{{buttonType}}">预定明日餐</button>
+          <button class="submit-button" plain="true"  form-type="submit" type="{{buttonType}}">Order for tomorrow</button>
         </block>
         <block wx:elif="{{status=='提交中'}}">
-          <button disabled="true" class="submit-button" plain="true"  form-type="submit" type="{{buttonType}}">提交中...</button>
+          <button disabled="true" class="submit-button" plain="true"  form-type="submit" type="{{buttonType}}">Submitting...</button>
         </block>
       </block>
     </block>
     <block wx:else>
-      <button disabled="true" class="submit-button" plain="true"  form-type="submit" type="{{buttonType}}">未登录</button>
+      <button disabled="true" class="submit-button" plain="true"  form-type="submit" type="{{buttonType}}">Please log in first</button>
     </block>  
     </form>
      
   </view>
-  <view style="width:100%;"><navigator url="/pages/orderRecord/main" open-type="navigate">查看我的预定记录</navigator></view>
+  <view style="width:100%;"><navigator url="/pages/orderRecord/main" open-type="navigate">My Previous Orders</navigator></view>
 </view>

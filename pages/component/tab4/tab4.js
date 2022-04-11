@@ -14,13 +14,13 @@ Component({
     lunch:0,
     dinner:0,
     checkboxItemsbreaki:[
-      {name:"早餐",value:'1'}
+      {name:"Breakfast",value:'1'}
     ],
      checkboxItemslunch:[
-      {name:"午餐",value:'1'}
+      {name:"Lunch",value:'1'}
     ],
      checkboxItemsdinner:[
-      {name:"晚餐",value:'1'}
+      {name:"Dinner",value:'1'}
     ]
   },
 
@@ -136,11 +136,11 @@ Component({
   var mealTime = now.getMonth()+1+"月"+Number(now.getDate()+1)+"日";  
 var hourn = now.getHours();
 if(hourn >=19){
-  db.collection("config").doc("cbddf0af60f03d13170dd9df7013f1e2").update({
+  db.collection("config").doc("807102f6624d90ea04ddb6b568356b53").update({
     data:{can_order2:false}
   })
 }else{
-   db.collection("config").doc("cbddf0af60f03d13170dd9df7013f1e2").update({
+   db.collection("config").doc("807102f6624d90ea04ddb6b568356b53").update({
       data:{can_order2:true}
     })
 }
@@ -251,7 +251,7 @@ if(hourn >=19){
     },
   _save:function(){
     wx.showLoading({
-      title: '提交中...',
+      title: 'Submitting...',
     })
 
     this.setData({
@@ -279,11 +279,11 @@ if(hourn >=19){
     
       success: res => {
         wx.showLoading({
-          title: '提交中...',
+          title: 'Submitting...',
         })
         this.init();
         wx.showToast({
-          title: '预定成功',
+          title: 'Success',
         });
 
       },

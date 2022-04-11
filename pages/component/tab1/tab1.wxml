@@ -1,0 +1,60 @@
+<!--index.wxml-->
+<view class="container"style="width:80%;margin:auto;margin-top:10px;">
+<label>姓名+ID:</label>
+<input bindinput="getEmployee" value="{{employee}}"></input>
+<view class="line"></view>
+
+<br/>
+  <view hidden="{{buttonHidden}}" style="flex-direction:column;">
+    <view style="margin-bottom:7px;">
+      <button disabled="{{buttonDisabled}}" data-score="5" plain="true" type="primary" class="button" bindtap="setScore">非常好👍{{score5}}</button>
+    </view><br/><br/><br/>
+    <view style="margin-bottom:7px;">
+      <button disabled="{{buttonDisabled}}" data-score="4" plain="true" type="primary" class="button" bindtap="setScore">好👌{{score4}}</button>
+    </view>
+    <view style="margin-bottom:7px;">
+      <button disabled="{{buttonDisabled}}" data-score="3" plain="true" type="default" class="button" bindtap="setScore">一般😶{{score3}}</button>
+    </view>
+    <view style="margin-bottom:7px;">
+      <button disabled="{{buttonDisabled}}" data-score="2" plain="true" type="warn" class="button" bindtap="setScore">差👎{{score2}}</button>
+    </view>
+    <view style="margin-bottom:7px;">
+      <button disabled="{{buttonDisabled}}" data-score="1" plain="true" type="warn" class="button" bindtap="setScore">糟糕😡{{score1}}</button>
+
+    </view>
+
+  </view>
+
+  <view hidden="{{remarkHidden}}" style="flex-direction:column;">
+    <view style="margin">
+      <button type="warn" plain="true" style="width:700rpx;margin:10rpx" bindtap="setScore" data-remark="{{remark1}}">{{remark1}}</button>
+    </view>
+    <view>
+      <button type="warn" plain="true" style="width:700rpx;margin:10rpx" bindtap="setScore" data-remark="{{remark2}}">{{remark2}}</button>
+    </view>
+    <view>
+      <button type="warn" plain="true" style="width:700rpx;margin:10rpx" bindtap="setScore" data-remark="{{remark3}}">{{remark3}}</button>
+    </view>
+    <view>
+      <button type="warn" plain="true" style="width:700rpx;margin:10rpx" bindtap="setScore" data-remark="{{remark4}}">{{remark4}}</button>
+    </view>
+    <view>
+      <button type="warn" plain="true" style="width:700rpx;margin:10rpx" bindtap="setScore" data-remark="{{remark5}}">{{remark5}}</button>
+    </view>
+        <view>
+      <button type="warn" plain="true" style="width:700rpx;margin:10rpx" bindtap="setScore" data-remark="{{remark6}}">{{remark6}}</button>
+    </view>
+  </view>
+  <view class=""></view>
+<view class="section" style="margin-top:40px;">
+  <picker mode="date" value="{{createDate}}" bindchange="bindDateChange">
+    <view class="picker"style="font-size:13px;">
+      查看历史评价: {{createDate}}
+    </view>
+  </picker>
+</view>
+<button class="bt" bindtap="sendScoreNew" style="margin-top:20px;">Send Score (Admin)</button>
+<modal hidden="{{hiddenSendCommentModal}}" title="Password" confirm-text="submit" cancel-text="reset" bindcancel="cancel1" bindconfirm="confirm1">
+      <input name="password1" password="true" type="text" placeholder="password" bindinput="getPassword1" value="{{password1}}" />
+    </modal>
+</view>

@@ -2,18 +2,32 @@
 <view class="container">
 	<view class="userinfo">
 		<block wx:if="{{!hasUserInfo && canIUse}}">
-			<button class="userinfo-button" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 登录</button>
+			<button class="userinfo-button" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> Login</button>
 		</block>
 
 	</view>
-<view class="txt">明日工作餐预定平台。预定和取消都要在本日19:00内完成，19:00后无法修改。</view>
 
+	<view class='tab-wrapper'>
 
-		<view class='content-wrapper' >
-		<tab4 />
+	
+<view id='tab1' class='tab-item {{currentTab == 1 ? "tab-active" : ""}}' bindtap='switchTab' data-value="1">{{tab1_title}}</view>
+
+<view id='tab3' class='tab-item {{currentTab == 3 ? "tab-active" : ""}}' bindtap='switchTab' data-value="3">{{tab3_title}}</view>
+
+</view>
+<view class='content-wrapper' wx:if='{{currentTab == 1}}'>
+<view style="margin-left: 7px;margin-top:5px;"><i>每天仅可打分一次</i></view>
+		<tab1 />
 	</view>
+
+
+	<view class='content-wrapper' wx:if='{{currentTab == 3}}'>
+		<tab3 />
+	</view>
+
+
 
 
 </view>
 
-<label class="label2">Copyright@东北欧IT业务服务部 Alexia wx1074583</label>
+<label class="label2">CEE&Nordic European IT Business Service Dept</label>

@@ -1,5 +1,7 @@
 {
   "usingComponents": {
-    "tab4": "/pages/component/tab4/tab4"
+
+    "tab3": "/pages/component/tab3/tab3",
+    "tab1": "/pages/component/tab1/tab1"
   }
 }

@@ -1,0 +1,13 @@
+/* pages/component/tab1/main.wxss */
+.line{
+  margin: 0 auto;
+  height: 1px;
+  background-color: #07C160;
+  margin-bottom: 50rpx;
+}
+
+.bt{
+  height: 70rpx;
+  width: 66%;
+  font-size: small;
+}

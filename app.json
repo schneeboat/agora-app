@@ -2,14 +2,14 @@
   "pages": [
     "pages/index/index",
     "pages/logs/logs",
-    "pages/orderRecord/main",
-    "pages/component/tab4/tab4"
+    "pages/orderRecord/main"
+  
   ],
 
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#ffffff",
-    "navigationBarTitleText": "Agora订餐",
+    "navigationBarTitleText": "Agora就餐评价",
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json"

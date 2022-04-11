@@ -1,17 +1,17 @@
 <!--pages/orderRecord/main.wxml-->
-		<button class="bt" bindtap="sendScoreNew" disabled="{{can_order2}}"><b>管理员</b>发送订餐记录(仅19:00后）</button>
-      <modal hidden="{{hiddenSendCommentModal}}" title="请输入密码" confirm-text="提交" cancel-text="重置" bindcancel="cancel1" bindconfirm="confirm1">
-      <input name="password1" password="true" type="text" placeholder="密码" bindinput="getPassword1" value="{{password1}}" />
+		<button class="bt" bindtap="sendScoreNew" disabled="{{can_order2}}"><b>Admin</b> Send Order List(after 19:00）</button>
+      <modal hidden="{{hiddenSendCommentModal}}" title="Password" confirm-text="Submit" cancel-text="Reset" bindcancel="cancel1" bindconfirm="confirm1">
+      <input name="password1" password="true" type="text" placeholder="password" bindinput="getPassword1" value="{{password1}}" />
     </modal>
 <view class="table">
   <view class="tr bg-w">
-    <view class="th">姓名工号</view>
-    <view class="th">订餐日期</view>
-    <view class="th ">就餐日期</view>
-    <view class="th">早</view>
-    <view class="th">午</view>
-    <view class="th">晚</view>
-    <view class="th ">预定状态</view>
+    <view class="th">Name</view>
+    <view class="th">submitAt</view>
+    <view class="th ">mealT</view>
+    <view class="th">Break</view>
+    <view class="th">Lunch</view>
+    <view class="th">Dinner</view>
+    <view class="th ">Status</view>
   </view>
 
   <block wx:for="{{listData}}">
